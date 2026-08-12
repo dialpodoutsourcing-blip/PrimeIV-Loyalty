@@ -3,10 +3,13 @@ import "./globals.css";
 import "./admin/analytics.css";
 import "./customer-qr.css";
 import "./signup.css";
+import PwaRegister from "./pwa-register";
 
 export const metadata: Metadata = {
   title: "Prime IV Rewards",
   description: "Your Prime IV Hydration & Wellness loyalty rewards.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { capable: true, title: "Prime IV", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
@@ -18,7 +21,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><PwaRegister />{children}</body>
     </html>
   );
 }
