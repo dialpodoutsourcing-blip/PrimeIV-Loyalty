@@ -2,7 +2,7 @@
 
 A digital loyalty card for Prime IV Hydration & Wellness. Guests earn one verified punch for each in-person spa visit and unlock a sequence of rewards. The guest experience is mobile-first; the staff workspace is desktop-only.
 
-This repository currently contains the product and engineering plan. Implementation has not started.
+The repository includes the implemented customer portal, desktop admin workspace, Supabase migrations, spa-specific signup flow, QR check-in, scheduling, loyalty configuration, and GoHighLevel integration.
 
 ## Product snapshot
 
@@ -13,6 +13,8 @@ This repository currently contains the product and engineering plan. Implementat
 
 ## Documentation
 
+- [Portal tutorial for admins, staff, and customers](docs/PORTAL_TUTORIAL.md)
+- [Current implemented features](docs/CURRENT_FEATURES.md)
 - [Product requirements](docs/PRODUCT_REQUIREMENTS.md)
 - [User journeys](docs/USER_FLOWS.md)
 - [UX and brand direction](docs/UX_UI.md)
@@ -30,4 +32,3 @@ This repository currently contains the product and engineering plan. Implementat
 3. Corrections are recorded rather than silently deleting history.
 4. Guest UI starts with small screens; staff UI targets desktop workflows.
 5. Rewards are data-driven so the program can change without redesigning the app.
-
