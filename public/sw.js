@@ -1,5 +1,5 @@
-const CACHE = "prime-iv-shell-v2";
-const SHELL = ["/", "/login", "/prime-iv-logo.png", "/manifest.webmanifest"];
+const CACHE = "prime-iv-shell-v3";
+const SHELL = ["/", "/login", "/prime-iv-logo.png", "/pwa-icon-192.png", "/pwa-icon-512.png", "/manifest.webmanifest"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
