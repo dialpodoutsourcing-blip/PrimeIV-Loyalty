@@ -1,4 +1,4 @@
-const CACHE = "prime-iv-shell-v1";
+const CACHE = "prime-iv-shell-v2";
 const SHELL = ["/", "/login", "/prime-iv-logo.png", "/manifest.webmanifest"];
 
 self.addEventListener("install", event => {
