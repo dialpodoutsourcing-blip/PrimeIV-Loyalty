@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./admin/analytics.css";
+import "./customer-qr.css";
 import "./signup.css";
 
 export const metadata: Metadata = {
