@@ -44,3 +44,18 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
   if (!data) return NextResponse.json({ error: "Service was not found in your spa." }, { status: 404 });
   return NextResponse.json({ service: data });
 }
+
+export async function DELETE(_request: NextRequest, context: { params: Promise<{ id: string }> }) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: "Authentication required." }, { status: 401 });
+  const { data: membership } = await supabase.from("staff_memberships").select("spa_id,role").eq("user_id", user.id).eq("active", true).in("role", ["manager", "admin"]).maybeSingle();
+  if (!membership) return NextResponse.json({ error: "Manager access required." }, { status: 403 });
+  const { id } = await context.params;
+  const admin = createAdminClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SECRET_KEY!, { auth: { persistSession: false, autoRefreshToken: false } });
+  // Archive the row so historical appointments and rewards retain their references.
+  const { data, error } = await admin.from("services").update({ active: false, is_bookable: false }).eq("id", id).eq("spa_id", membership.spa_id).select("id").maybeSingle();
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  if (!data) return NextResponse.json({ error: "Product or service was not found in your spa." }, { status: 404 });
+  return NextResponse.json({ deleted: true, id });
+}
